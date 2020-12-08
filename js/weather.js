@@ -31,8 +31,19 @@ function gettingJSON(){
     //set the query 
     let query; 
     keyhw = "04d72a5ec79e2e14a507f103851831aa";
-    query = "https://api.openweathermap.org/data/2.5/weather?q=" + location + "&units=" + format + "&appid=" + keyhw;
+	
+
+
+    if (Number.isInteger(parseInt(location))){
+        console.log("Using zip code");
+        query = "https://api.openweathermap.org/data/2.5/weather?zip=" + location + "&APPID=" + keyhw + "&units=" + format;
+    }
+    else{
+        query = "https://api.openweathermap.org/data/2.5/weather?q=" + location + "&APPID=" + keyhw + "&units=" + format;
+        console.log("Using city name");
+    }
     console.log("Query is :" + query);
+
 
   
 
